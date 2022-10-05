@@ -9,68 +9,73 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import requests
+import time
 
 # Separator
+
+# Start time
+st = time.time()
+
 ch = '_'
 
-url_list = ['https://lista.mercadolivre.com.br/esportes-fitness/',
-            'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
-            'https://lista.mercadolivre.com.br/saude/',
-            'https://lista.mercadolivre.com.br/acessorios-veiculos/',
+url_list = [# 'https://lista.mercadolivre.com.br/esportes-fitness/',
+            # 'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+            # 'https://lista.mercadolivre.com.br/saude/',
+            # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
             'https://lista.mercadolivre.com.br/alimentos-bebidas/',
-            'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
-            'https://lista.mercadolivre.com.br/bebes/',
-            'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
-            'https://lista.mercadolivre.com.br/celulares-telefones/',
-            'https://lista.mercadolivre.com.br/agro/',
-            'https://lista.mercadolivre.com.br/animais/',
-            'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
-            'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
-            'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
-            'https://lista.mercadolivre.com.br/construcao/',
-            'https://lista.mercadolivre.com.br/cameras-acessorios/',
-            'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
-            'https://lista.mercadolivre.com.br/ferramentas/',
-            'https://lista.mercadolivre.com.br/games/',
-            'https://lista.mercadolivre.com.br/industria-comercio/',
-            'https://lista.mercadolivre.com.br/ingressos/',
-            'https://lista.mercadolivre.com.br/joias-relogios/',
-            'https://lista.mercadolivre.com.br/eletrodomesticos/',
-            'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
-            'https://lista.mercadolivre.com.br/informatica/',
-            'https://lista.mercadolivre.com.br/instrumentos-musicais/',
-            'https://lista.mercadolivre.com.br/livros-revistas-comics/',
-            'https://lista.mercadolivre.com.br/mais-categorias/'
+            # 'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
+            # 'https://lista.mercadolivre.com.br/bebes/',
+            # 'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
+            # 'https://lista.mercadolivre.com.br/celulares-telefones/',
+            # 'https://lista.mercadolivre.com.br/agro/',
+            # 'https://lista.mercadolivre.com.br/animais/',
+            # 'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
+            # 'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
+            # 'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
+            # 'https://lista.mercadolivre.com.br/construcao/',
+            # 'https://lista.mercadolivre.com.br/cameras-acessorios/',
+            # 'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
+            # 'https://lista.mercadolivre.com.br/ferramentas/',
+            # 'https://lista.mercadolivre.com.br/games/',
+            # 'https://lista.mercadolivre.com.br/industria-comercio/',
+            # 'https://lista.mercadolivre.com.br/ingressos/',
+            # 'https://lista.mercadolivre.com.br/joias-relogios/',
+            # 'https://lista.mercadolivre.com.br/eletrodomesticos/',
+            # 'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
+            # 'https://lista.mercadolivre.com.br/informatica/',
+            # 'https://lista.mercadolivre.com.br/instrumentos-musicais/',
+            # 'https://lista.mercadolivre.com.br/livros-revistas-comics/',
+            # 'https://lista.mercadolivre.com.br/mais-categorias/'
             ]
 categorias_list = [
-    'esportes-fitness',
-    'calcados-roupas-bolsas',
-    'saude',
-    'acessorios-veiculos',
+    # 'esportes-fitness',
+    # 'calcados-roupas-bolsas',
+    # 'saude',
+    # 'acessorios-veiculos',
     'alimentos-bebidas',
-    'antiguidades-colecoes',
-    'bebes',
-    'brinquedos-hobbies',
-    'celulares-telefones',
-    'agro',
-    'animais',
-    'arte-papelaria-armarinho',
-    'beleza-cuidado-pessoal',
-    'casa-moveis-decoracao',
-    'construcao',
-    'cameras-acessorios',
-    'eletronicos-audio-video',
-    'ferramentas',
-    'games',
-    'industria-comercio',
-    'ingressos',
-    'joias-relogios',
-    'eletrodomesticos',
-    'festas-lembrancinhas',
-    'informatica',
-    'instrumentos-musicais',
-    'livros-revistas-comics',
-    'mais-categorias'
+    # 'antiguidades-colecoes',
+    # 'bebes',
+    # 'brinquedos-hobbies',
+    # 'celulares-telefones',
+    # 'agro',
+    # 'animais',
+    # 'arte-papelaria-armarinho',
+    # 'beleza-cuidado-pessoal',
+    # 'casa-moveis-decoracao',
+    # 'construcao',
+    # 'cameras-acessorios',
+    # 'eletronicos-audio-video',
+    # 'ferramentas',
+    # 'games',
+    # 'industria-comercio',
+    # 'ingressos',
+    # 'joias-relogios',
+    # 'eletrodomesticos',
+    # 'festas-lembrancinhas',
+    # 'informatica',
+    # 'instrumentos-musicais',
+    # 'livros-revistas-comics',
+    # 'mais-categorias'
 ]
 
 # Formating Date
@@ -170,24 +175,20 @@ for link_index in range(len(url_list)):
                 aux = aux + 1
                 if aux == 3:
                     break
-
         # Acessa cada anúncio coletado, pega as vendas e armazena em uma das três listas
         for links_anuncios in links_3_anuncios:
             page = requests.get(links_anuncios)
             site = BeautifulSoup(page.content, "html.parser")
 
-            vendas = site.find('span', class_='ui-pdp-subtitle').getText()
-
+            try:
+                vendas = site.find('span', class_='ui-pdp-subtitle').getText()
+            except:
+                vendas = 0
             # Conferindo se teve venda
             try:
                 vendas = int(re.sub('[^0-9]', '', vendas))
             except:
                 vendas = 0
-
-            # print(len(vendas_anuncio_1) + 1)
-            # print(len(vendas_anuncio_2) + 1)
-            # print(len(vendas_anuncio_3) + 1)
-            # print('-----')
 
             if len(vendas_anuncio_1) == 0:
                 vendas_anuncio_1.append(vendas)
@@ -272,5 +273,9 @@ for column in data:
     writer.sheets['instrumentos-musicais'].set_column(col_idx, col_idx, column_length)
     writer.sheets['livros-revistas-comics'].set_column(col_idx, col_idx, column_length)
     writer.sheets['mais-categorias'].set_column(col_idx, col_idx, column_length)
+
+
+elapsed_time = time.time() - st
+print('Execution time:', time.strftime("%H:%M:%S", time.gmtime(elapsed_time)))
 
 writer.save()
