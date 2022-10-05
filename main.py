@@ -13,8 +13,8 @@ import requests
 # Separator
 ch = '_'
 
-url_list = ['https://lista.mercadolivre.com.br/esportes-fitness/',
-            # 'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+url_list = [# 'https://lista.mercadolivre.com.br/esportes-fitness/',
+             'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
             # 'https://lista.mercadolivre.com.br/saude/',
             # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
             # 'https://lista.mercadolivre.com.br/alimentos-bebidas/',
@@ -43,8 +43,8 @@ url_list = ['https://lista.mercadolivre.com.br/esportes-fitness/',
             # 'https://lista.mercadolivre.com.br/mais-categorias/'
             ]
 categorias_list = [
-    'esportes-fitness',
-    # 'calcados-roupas-bolsas',
+    # 'esportes-fitness',
+     'calcados-roupas-bolsas',
     # 'saude',
     # 'acessorios-veiculos',
     # 'alimentos-bebidas',
