@@ -201,7 +201,7 @@ for link_index in range(len(url_list)):
     # Google Trends
     url_google_trends = "https://trends.google.com.br/trends/explore?geo=BR&q="
     link_trends_list = []
-    for name in posicao_list:
+    for name in nome_list:
         link_trends_list.append(url_google_trends + name)
 
     # Salvando em um DataFrame
