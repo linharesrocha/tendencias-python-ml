@@ -13,37 +13,37 @@ import requests
 # Separator
 ch = '_'
 
-url_list = [  # 'https://lista.mercadolivre.com.br/esportes-fitness/',
-    'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
-    # 'https://lista.mercadolivre.com.br/saude/',
-    # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
-    # 'https://lista.mercadolivre.com.br/alimentos-bebidas/',
-    # 'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
-    # 'https://lista.mercadolivre.com.br/bebes/',
-    # 'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
-    # 'https://lista.mercadolivre.com.br/celulares-telefones/',
-    # 'https://lista.mercadolivre.com.br/agro/',
-    # 'https://lista.mercadolivre.com.br/animais/',
-    # 'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
-    # 'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
-    # 'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
-    # 'https://lista.mercadolivre.com.br/construcao/',
-    # 'https://lista.mercadolivre.com.br/cameras-acessorios/',
-    # 'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
-    # 'https://lista.mercadolivre.com.br/ferramentas/',
-    # 'https://lista.mercadolivre.com.br/games/',
-    # 'https://lista.mercadolivre.com.br/industria-comercio/',
-    # 'https://lista.mercadolivre.com.br/ingressos/',
-    # 'https://lista.mercadolivre.com.br/joias-relogios/',
-    # 'https://lista.mercadolivre.com.br/eletrodomesticos/',
-    # 'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
-    # 'https://lista.mercadolivre.com.br/informatica/',
-    # 'https://lista.mercadolivre.com.br/instrumentos-musicais/',
-    # 'https://lista.mercadolivre.com.br/livros-revistas-comics/',
-    # 'https://lista.mercadolivre.com.br/mais-categorias/'
-]
+url_list = ['https://lista.mercadolivre.com.br/esportes-fitness/',
+            'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+            # 'https://lista.mercadolivre.com.br/saude/',
+            # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
+            # 'https://lista.mercadolivre.com.br/alimentos-bebidas/',
+            # 'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
+            # 'https://lista.mercadolivre.com.br/bebes/',
+            # 'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
+            # 'https://lista.mercadolivre.com.br/celulares-telefones/',
+            # 'https://lista.mercadolivre.com.br/agro/',
+            # 'https://lista.mercadolivre.com.br/animais/',
+            # 'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
+            # 'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
+            # 'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
+            # 'https://lista.mercadolivre.com.br/construcao/',
+            # 'https://lista.mercadolivre.com.br/cameras-acessorios/',
+            # 'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
+            # 'https://lista.mercadolivre.com.br/ferramentas/',
+            # 'https://lista.mercadolivre.com.br/games/',
+            # 'https://lista.mercadolivre.com.br/industria-comercio/',
+            # 'https://lista.mercadolivre.com.br/ingressos/',
+            # 'https://lista.mercadolivre.com.br/joias-relogios/',
+            # 'https://lista.mercadolivre.com.br/eletrodomesticos/',
+            # 'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
+            # 'https://lista.mercadolivre.com.br/informatica/',
+            # 'https://lista.mercadolivre.com.br/instrumentos-musicais/',
+            # 'https://lista.mercadolivre.com.br/livros-revistas-comics/',
+            # 'https://lista.mercadolivre.com.br/mais-categorias/'
+            ]
 categorias_list = [
-    # 'esportes-fitness',
+    'esportes-fitness',
     'calcados-roupas-bolsas',
     # 'saude',
     # 'acessorios-veiculos',
@@ -151,14 +151,22 @@ for link_index in range(len(url_list)):
 
         # Pega todos os links de produtos da categoria
         todos_anuncios_container = site.find_all('a', class_='ui-search-result__content ui-search-link')
-
-        # Função para coletar os links de apenas dos três anúncios
-        aux = 0
-        for produto in todos_anuncios_container:
-            links_3_anuncios.append(produto.get('href'))
-            aux = aux + 1
-            if aux == 3:
-                break
+        if len(todos_anuncios_container) != 0:
+            aux = 0
+            for produto in todos_anuncios_container:
+                links_3_anuncios.append(produto.get('href'))
+                aux = aux + 1
+                if aux == 3:
+                    break
+        if len(todos_anuncios_container) == 0:
+            todos_anuncios_container = site.find_all('div', class_='ui-search-result__image shops__picturesStyles')
+            aux = 0
+            for produto in todos_anuncios_container:
+                filtrando_produto_link = produto.find("a", class_="ui-search-link").get('href')
+                links_3_anuncios.append(filtrando_produto_link)
+                aux = aux + 1
+                if aux == 3:
+                    break
 
         # Acessa cada anúncio coletado, pega as vendas e armazena em uma das três listas
         for links_anuncios in links_3_anuncios:
@@ -173,10 +181,10 @@ for link_index in range(len(url_list)):
             except:
                 vendas = 0
 
-            print(len(vendas_anuncio_1))
-            print(len(vendas_anuncio_2))
-            print(len(vendas_anuncio_3))
-            print('-----')
+            # print(len(vendas_anuncio_1) + 1)
+            # print(len(vendas_anuncio_2) + 1)
+            # print(len(vendas_anuncio_3) + 1)
+            # print('-----')
 
             if len(vendas_anuncio_1) == 0:
                 vendas_anuncio_1.append(vendas)
