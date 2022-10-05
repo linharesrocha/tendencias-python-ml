@@ -13,64 +13,64 @@ import requests
 # Separator
 ch = '_'
 
-url_list = [# 'https://lista.mercadolivre.com.br/esportes-fitness/',
-             'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
-            # 'https://lista.mercadolivre.com.br/saude/',
-            # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
-            # 'https://lista.mercadolivre.com.br/alimentos-bebidas/',
-            # 'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
-            # 'https://lista.mercadolivre.com.br/bebes/',
-            # 'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
-            # 'https://lista.mercadolivre.com.br/celulares-telefones/',
-            # 'https://lista.mercadolivre.com.br/agro/',
-            # 'https://lista.mercadolivre.com.br/animais/',
-            # 'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
-            # 'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
-            # 'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
-            # 'https://lista.mercadolivre.com.br/construcao/',
-            # 'https://lista.mercadolivre.com.br/cameras-acessorios/',
-            # 'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
-            # 'https://lista.mercadolivre.com.br/ferramentas/',
-            # 'https://lista.mercadolivre.com.br/games/',
-            # 'https://lista.mercadolivre.com.br/industria-comercio/',
-            # 'https://lista.mercadolivre.com.br/ingressos/',
-            # 'https://lista.mercadolivre.com.br/joias-relogios/',
-            # 'https://lista.mercadolivre.com.br/eletrodomesticos/',
-            # 'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
-            # 'https://lista.mercadolivre.com.br/informatica/',
-            # 'https://lista.mercadolivre.com.br/instrumentos-musicais/',
-            # 'https://lista.mercadolivre.com.br/livros-revistas-comics/',
-            # 'https://lista.mercadolivre.com.br/mais-categorias/'
+url_list = ['https://lista.mercadolivre.com.br/esportes-fitness/',
+            'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+            'https://lista.mercadolivre.com.br/saude/',
+            'https://lista.mercadolivre.com.br/acessorios-veiculos/',
+            'https://lista.mercadolivre.com.br/alimentos-bebidas/',
+            'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
+            'https://lista.mercadolivre.com.br/bebes/',
+            'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
+            'https://lista.mercadolivre.com.br/celulares-telefones/',
+            'https://lista.mercadolivre.com.br/agro/',
+            'https://lista.mercadolivre.com.br/animais/',
+            'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
+            'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
+            'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
+            'https://lista.mercadolivre.com.br/construcao/',
+            'https://lista.mercadolivre.com.br/cameras-acessorios/',
+            'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
+            'https://lista.mercadolivre.com.br/ferramentas/',
+            'https://lista.mercadolivre.com.br/games/',
+            'https://lista.mercadolivre.com.br/industria-comercio/',
+            'https://lista.mercadolivre.com.br/ingressos/',
+            'https://lista.mercadolivre.com.br/joias-relogios/',
+            'https://lista.mercadolivre.com.br/eletrodomesticos/',
+            'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
+            'https://lista.mercadolivre.com.br/informatica/',
+            'https://lista.mercadolivre.com.br/instrumentos-musicais/',
+            'https://lista.mercadolivre.com.br/livros-revistas-comics/',
+            'https://lista.mercadolivre.com.br/mais-categorias/'
             ]
 categorias_list = [
-    # 'esportes-fitness',
-     'calcados-roupas-bolsas',
-    # 'saude',
-    # 'acessorios-veiculos',
-    # 'alimentos-bebidas',
-    # 'antiguidades-colecoes',
-    # 'bebes',
-    # 'brinquedos-hobbies',
-    # 'celulares-telefones',
-    # 'agro',
-    # 'animais',
-    # 'arte-papelaria-armarinho',
-    # 'beleza-cuidado-pessoal',
-    # 'casa-moveis-decoracao',
-    # 'construcao',
-    # 'cameras-acessorios',
-    # 'eletronicos-audio-video',
-    # 'ferramentas',
-    # 'games',
-    # 'industria-comercio',
-    # 'ingressos',
-    # 'joias-relogios',
-    # 'eletrodomesticos',
-    # 'festas-lembrancinhas',
-    # 'informatica',
-    # 'instrumentos-musicais',
-    # 'livros-revistas-comics',
-    # 'mais-categorias'
+    'esportes-fitness',
+    'calcados-roupas-bolsas',
+    'saude',
+    'acessorios-veiculos',
+    'alimentos-bebidas',
+    'antiguidades-colecoes',
+    'bebes',
+    'brinquedos-hobbies',
+    'celulares-telefones',
+    'agro',
+    'animais',
+    'arte-papelaria-armarinho',
+    'beleza-cuidado-pessoal',
+    'casa-moveis-decoracao',
+    'construcao',
+    'cameras-acessorios',
+    'eletronicos-audio-video',
+    'ferramentas',
+    'games',
+    'industria-comercio',
+    'ingressos',
+    'joias-relogios',
+    'eletrodomesticos',
+    'festas-lembrancinhas',
+    'informatica',
+    'instrumentos-musicais',
+    'livros-revistas-comics',
+    'mais-categorias'
 ]
 
 # Formating Date
@@ -83,6 +83,8 @@ if not os.path.exists('XLSX'):
 
 # Engine Excel
 writer = pd.ExcelWriter('XLSX/' + 'Tendencias' + '-' + d1 + '.xlsx', engine='xlsxwriter')
+
+user_agent = {'User-agent': 'Mozilla/5.0'}
 
 #############################################################################################
 #############################################################################################
@@ -102,6 +104,7 @@ for link_index in range(len(url_list)):
     normal_quantity_list = []
     full_quantity_list = []
     porcentagem_no_full_list = []
+    qntd_netshoes_list = []
     links_3_anuncios = []
     vendas_3_anuncios = []
     vendas_anuncio_1 = []
@@ -204,11 +207,29 @@ for link_index in range(len(url_list)):
     for name in nome_list:
         link_trends_list.append(url_google_trends + name)
 
+    # Netshoes
+    url = 'https://www.netshoes.com.br/busca?nsCat=Natural&q='
+    for name in nome_list:
+        page = requests.get(url + name, headers=user_agent)
+        site = BeautifulSoup(page.content, "html.parser")
+
+        # Quantidade de anuncios Netshoes
+        try:
+            container = site.find(class_="items-info")
+            product_quantity_string = container.find('span', class_='block').getText()
+            list_numbers_string = re.findall(r'\d+', product_quantity_string)
+            results = list(map(int, list_numbers_string))
+            product_quantity = results[-1]
+        except AttributeError:
+            product_quantity = 0
+
+        qntd_netshoes_list.append(product_quantity)
+
     # Salvando em um DataFrame
     dicionario = {'Posicao': posicao_list, 'Nome': nome_list, 'Link_ML': link_list, 'Qnt_Normal': normal_quantity_list,
                   'Qnt_Full': full_quantity_list, '%_no_Full': porcentagem_no_full_list, 'Trends': link_trends_list,
                   'V_Anuncio_1': vendas_anuncio_1,
-                  'V_Anuncio_2': vendas_anuncio_2, 'V_Anuncio_3': vendas_anuncio_3}
+                  'V_Anuncio_2': vendas_anuncio_2, 'V_Anuncio_3': vendas_anuncio_3, 'Qnt_Netshoes': qntd_netshoes_list}
     data = pd.DataFrame(dicionario)
 
     # Ultima atualização
@@ -216,14 +237,14 @@ for link_index in range(len(url_list)):
 
     # Salvando no Excel
     data = data[
-        ['Posicao', 'Nome', 'Qnt_Normal', 'Qnt_Full', '%_no_Full', 'V_Anuncio_1', 'V_Anuncio_2', 'V_Anuncio_3',
-         'Link_ML',
-         'Trends', 'UltimaAtualizacao']]
+        ['Posicao', 'Nome', 'Qnt_Netshoes', 'Qnt_Normal', 'Qnt_Full', '%_no_Full', 'V_Anuncio_1', 'V_Anuncio_2',
+         'V_Anuncio_3', 'Link_ML', 'Trends', 'UltimaAtualizacao']]
     data.to_excel(writer, sheet_name=categorias_list[link_index], index=False)
 
-    # for column in data:
-    #     column_length = max(data[column].astype(str).map(len).max(), len(column))
-    #     col_idx = data.columns.get_loc(column)
-    #     writer.sheets['esportes-fitness'].set_column(col_idx, col_idx, column_length)
+for column in data:
+    column_length = max(data[column].astype(str).map(len).max(), len(column))
+    col_idx = data.columns.get_loc(column)
+    writer.sheets['esportes-fitness'].set_column(col_idx, col_idx, column_length)
+    writer.sheets['calcados-roupas-bolsas'].set_column(col_idx, col_idx, column_length)
 
 writer.save()
