@@ -268,7 +268,7 @@ for link_index in range(len(url_list)):
     # Ultima atualização
     data['UltimaAtualizacao'] = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
 
-    # Salvando no Excel
+    # Salvando no Excel #
     data = data[
         ['Posicao', 'Nome', 'Qnt_Netshoes', 'Qnt_Magalu', 'Qnt_ML', 'Qnt_Full', '%_no_Full', 'V_Anuncio_1', 'V_Anuncio_2',
          'V_Anuncio_3', 'Link_ML', 'Trends', 'UltimaAtualizacao']]
