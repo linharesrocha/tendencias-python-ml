@@ -7,7 +7,7 @@ from datetime import date
 import slack
 import os
 from pathlib import Path
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import requests
 import time
 
@@ -20,61 +20,61 @@ ch = '_'
 
 url_list = [
     'https://lista.mercadolivre.com.br/esportes-fitness/',
-    'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
-    'https://lista.mercadolivre.com.br/saude/',
-    'https://lista.mercadolivre.com.br/acessorios-veiculos/',
-    'https://lista.mercadolivre.com.br/alimentos-bebidas/',
-    'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
-    'https://lista.mercadolivre.com.br/bebes/',
-    'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
-    'https://lista.mercadolivre.com.br/celulares-telefones/',
-    'https://lista.mercadolivre.com.br/agro/',
-    'https://lista.mercadolivre.com.br/animais/',
-    'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
-    'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
-    'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
-    'https://lista.mercadolivre.com.br/construcao/',
-    'https://lista.mercadolivre.com.br/cameras-acessorios/',
-    'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
-    'https://lista.mercadolivre.com.br/ferramentas/',
-    'https://lista.mercadolivre.com.br/games/',
-    'https://lista.mercadolivre.com.br/industria-comercio/',
-    'https://lista.mercadolivre.com.br/joias-relogios/',
-    'https://lista.mercadolivre.com.br/eletrodomesticos/',
-    'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
-    'https://lista.mercadolivre.com.br/informatica/',
-    'https://lista.mercadolivre.com.br/instrumentos-musicais/',
-    'https://lista.mercadolivre.com.br/livros-revistas-comics/',
-    'https://lista.mercadolivre.com.br/mais-categorias/'
+    # 'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+    # 'https://lista.mercadolivre.com.br/saude/',
+    # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
+    # 'https://lista.mercadolivre.com.br/alimentos-bebidas/',
+    # 'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
+    # 'https://lista.mercadolivre.com.br/bebes/',
+    # 'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
+    # 'https://lista.mercadolivre.com.br/celulares-telefones/',
+    # 'https://lista.mercadolivre.com.br/agro/',
+    # 'https://lista.mercadolivre.com.br/animais/',
+    # 'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
+    # 'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
+    # 'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
+    # 'https://lista.mercadolivre.com.br/construcao/',
+    # 'https://lista.mercadolivre.com.br/cameras-acessorios/',
+    # 'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
+    # 'https://lista.mercadolivre.com.br/ferramentas/',
+    # 'https://lista.mercadolivre.com.br/games/',
+    # 'https://lista.mercadolivre.com.br/industria-comercio/',
+    # 'https://lista.mercadolivre.com.br/joias-relogios/',
+    # 'https://lista.mercadolivre.com.br/eletrodomesticos/',
+    # 'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
+    # 'https://lista.mercadolivre.com.br/informatica/',
+    # 'https://lista.mercadolivre.com.br/instrumentos-musicais/',
+    # 'https://lista.mercadolivre.com.br/livros-revistas-comics/',
+    # 'https://lista.mercadolivre.com.br/mais-categorias/'
 ]
 categorias_list = [
     'esportes-fitness',
-    'calcados-roupas-bolsas',
-    'saude',
-    'acessorios-veiculos',
-    'alimentos-bebidas',
-    'antiguidades-colecoes',
-    'bebes',
-    'brinquedos-hobbies',
-    'celulares-telefones',
-    'agro',
-    'animais',
-    'arte-papelaria-armarinho',
-    'beleza-cuidado-pessoal',
-    'casa-moveis-decoracao',
-    'construcao',
-    'cameras-acessorios',
-    'eletronicos-audio-video',
-    'ferramentas',
-    'games',
-    'industria-comercio',
-    'joias-relogios',
-    'eletrodomesticos',
-    'festas-lembrancinhas',
-    'informatica',
-    'instrumentos-musicais',
-    'livros-revistas-comics',
-    'mais-categorias'
+    # 'calcados-roupas-bolsas',
+    # 'saude',
+    # 'acessorios-veiculos',
+    # 'alimentos-bebidas',
+    # 'antiguidades-colecoes',
+    # 'bebes',
+    # 'brinquedos-hobbies',
+    # 'celulares-telefones',
+    # 'agro',
+    # 'animais',
+    # 'arte-papelaria-armarinho',
+    # 'beleza-cuidado-pessoal',
+    # 'casa-moveis-decoracao',
+    # 'construcao',
+    # 'cameras-acessorios',
+    # 'eletronicos-audio-video',
+    # 'ferramentas',
+    # 'games',
+    # 'industria-comercio',
+    # 'joias-relogios',
+    # 'eletrodomesticos',
+    # 'festas-lembrancinhas',
+    # 'informatica',
+    # 'instrumentos-musicais',
+    # 'livros-revistas-comics',
+    # 'mais-categorias'
 ]
 
 # Formating Date
@@ -88,7 +88,7 @@ if not os.path.exists('XLSX'):
 # Engine Excel
 writer = pd.ExcelWriter('XLSX/' + 'Tendencias' + '-' + d1 + '.xlsx', engine='xlsxwriter')
 
-user_agent = {'User-agent': 'Mozilla/5.0'}
+user_agent = {'User-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'}
 
 #############################################################################################
 #############################################################################################
@@ -263,35 +263,34 @@ for link_index in range(len(url_list)):
         qntd_magalu_list.append(product_quantity)
 
     # Dafiti
-    # url = 'https://www.dafiti.com.br/catalog/?q='
-    # for name in nome_list:
-    #     page = requests.get(url + name)
-    #     site = BeautifulSoup(page.content, "html.parser")
-    #     # Quantidade de anuncios Dafiti
-    #     try:
-    #         product_quantity_string = site.find('span', class_='value').getText()
-    #         print(product_quantity_string)
-    #         list_numbers_string = re.findall(r'\d+', product_quantity_string)
-    #         results = list(map(int, list_numbers_string))
-    #         product_quantity = results[-1]
-    #     except AttributeError:
-    #         product_quantity = 0
-    # 
-    #     qntd_dafiti_list.append(product_quantity)
+    url = 'https://www.dafiti.com.br/catalog/?q='
+    for name in nome_list:
+        page = requests.get(url + name, headers=user_agent)
+        site = BeautifulSoup(page.content, "html.parser")
+        # Quantidade de anuncios Dafiti
+        try:
+            product_quantity_string = site.find('span', class_='value').getText()
+            list_numbers_string = re.findall(r'\d+', product_quantity_string)
+            results = list(map(int, list_numbers_string))
+            product_quantity = results[-1]
+        except AttributeError:
+            product_quantity = 0
+
+        qntd_dafiti_list.append(product_quantity)
 
     # Salvando em um DataFrame
     dicionario = {'Posicao': posicao_list, 'Nome': nome_list, 'Link_ML': link_list, 'Qnt_ML': normal_quantity_list,
                   'Qnt_Full': full_quantity_list, '%_no_Full': porcentagem_no_full_list, 'Trends': link_trends_list,
                   'V_Anuncio_1': vendas_anuncio_1,
                   'V_Anuncio_2': vendas_anuncio_2, 'V_Anuncio_3': vendas_anuncio_3, 'Qnt_Netshoes': qntd_netshoes_list,
-                  'Qnt_Magalu': qntd_magalu_list}
+                  'Qnt_Magalu': qntd_magalu_list, 'Qnt_Dafiti': qntd_dafiti_list}
     data = pd.DataFrame(dicionario)
 
     # Ultima atualização
     data['UltimaAtualizacao'] = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
     # Salvando no Excel
     data = data[
-        ['Posicao', 'Nome', 'Qnt_Netshoes', 'Qnt_Magalu', 'Qnt_ML', 'Qnt_Full', '%_no_Full', 'V_Anuncio_1',
+        ['Posicao', 'Nome', 'Qnt_Netshoes', 'Qnt_Magalu', 'Qnt_Dafiti', 'Qnt_ML', 'Qnt_Full', '%_no_Full', 'V_Anuncio_1',
          'V_Anuncio_2',
          'V_Anuncio_3', 'Link_ML', 'Trends', 'UltimaAtualizacao']]
     data.to_excel(writer, sheet_name=categorias_list[link_index], index=False)
@@ -300,34 +299,45 @@ for column in data:
     column_length = max(data[column].astype(str).map(len).max(), len(column))
     col_idx = data.columns.get_loc(column)
     writer.sheets['esportes-fitness'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['calcados-roupas-bolsas'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['saude'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['acessorios-veiculos'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['alimentos-bebidas'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['antiguidades-colecoes'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['bebes'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['brinquedos-hobbies'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['celulares-telefones'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['agro'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['animais'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['arte-papelaria-armarinho'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['beleza-cuidado-pessoal'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['casa-moveis-decoracao'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['construcao'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['cameras-acessorios'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['eletronicos-audio-video'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['ferramentas'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['games'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['industria-comercio'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['joias-relogios'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['eletrodomesticos'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['festas-lembrancinhas'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['informatica'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['instrumentos-musicais'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['livros-revistas-comics'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['mais-categorias'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['calcados-roupas-bolsas'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['saude'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['acessorios-veiculos'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['alimentos-bebidas'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['antiguidades-colecoes'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['bebes'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['brinquedos-hobbies'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['celulares-telefones'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['agro'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['animais'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['arte-papelaria-armarinho'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['beleza-cuidado-pessoal'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['casa-moveis-decoracao'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['construcao'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['cameras-acessorios'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['eletronicos-audio-video'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['ferramentas'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['games'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['industria-comercio'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['joias-relogios'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['eletrodomesticos'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['festas-lembrancinhas'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['informatica'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['instrumentos-musicais'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['livros-revistas-comics'].set_column(col_idx, col_idx, column_length)
+    # writer.sheets['mais-categorias'].set_column(col_idx, col_idx, column_length)
+
+writer.save()
+
+# Env
+env_path = Path('.') / '.env'
+load_dotenv(dotenv_path=env_path)
+
+# Slack Client
+app = slack.WebClient(token=os.environ['SLACK_TOKEN'])
+
+# Seding
+app.chat_postMessage(channel='tendencias-test', text="PRODUTOS TENDÊNCIAS - " + d1)
+app.files_upload(channels='tendencias-test', file='XLSX/Tendencias-' + d1 + '.xlsx')
 
 elapsed_time = time.time() - st
 print('Execution time:', time.strftime("%H:%M:%S", time.gmtime(elapsed_time)))
-
-writer.save()
