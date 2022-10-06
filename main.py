@@ -39,7 +39,6 @@ url_list = [
     'https://lista.mercadolivre.com.br/ferramentas/',
     'https://lista.mercadolivre.com.br/games/',
     'https://lista.mercadolivre.com.br/industria-comercio/',
-    'https://lista.mercadolivre.com.br/ingressos/',
     'https://lista.mercadolivre.com.br/joias-relogios/',
     'https://lista.mercadolivre.com.br/eletrodomesticos/',
     'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
@@ -69,7 +68,6 @@ categorias_list = [
     'ferramentas',
     'games',
     'industria-comercio',
-    'ingressos',
     'joias-relogios',
     'eletrodomesticos',
     'festas-lembrancinhas',
@@ -191,29 +189,47 @@ for link_index in range(len(url_list)):
                 aux = aux + 1
                 if aux == 3:
                     break
+
         # Acessa cada anúncio coletado, pega as vendas e armazena em uma das três listas
-        for links_anuncios in links_3_anuncios:
-            page = requests.get(links_anuncios)
-            site = BeautifulSoup(page.content, "html.parser")
+        if len(links_3_anuncios) >= 3:
+            for links_anuncios in links_3_anuncios:
+                page = requests.get(links_anuncios)
+                site = BeautifulSoup(page.content, "html.parser")
+                try:
+                    vendas = site.find('span', class_='ui-pdp-subtitle').getText()
+                except:
+                    vendas = 0
+                # Conferindo se teve venda
+                try:
+                    vendas = int(re.sub('[^0-9]', '', vendas))
+                except:
+                    vendas = 0
 
-            try:
-                vendas = site.find('span', class_='ui-pdp-subtitle').getText()
-            except:
-                vendas = 0
-            # Conferindo se teve venda
-            try:
-                vendas = int(re.sub('[^0-9]', '', vendas))
-            except:
-                vendas = 0
+                if len(vendas_anuncio_1) == 0:
+                    vendas_anuncio_1.append(vendas)
+                elif len(vendas_anuncio_2) < len(vendas_anuncio_1):
+                    vendas_anuncio_2.append(vendas)
+                elif len(vendas_anuncio_3) < len(vendas_anuncio_2):
+                    vendas_anuncio_3.append(vendas)
+                elif len(vendas_anuncio_1) == len(vendas_anuncio_2) and len(vendas_anuncio_2) == len(vendas_anuncio_3):
+                    vendas_anuncio_1.append(vendas)
+        else:
+            vendas_anuncio_1.append('menos de 3 anuncios')
+            vendas_anuncio_2.append('menos de 3 anuncios')
+            vendas_anuncio_3.append('menos de 3 anuncios')
 
-            if len(vendas_anuncio_1) == 0:
-                vendas_anuncio_1.append(vendas)
-            elif len(vendas_anuncio_2) < len(vendas_anuncio_1):
-                vendas_anuncio_2.append(vendas)
-            elif len(vendas_anuncio_3) < len(vendas_anuncio_2):
-                vendas_anuncio_3.append(vendas)
-            elif len(vendas_anuncio_1) == len(vendas_anuncio_2) and len(vendas_anuncio_2) == len(vendas_anuncio_3):
-                vendas_anuncio_1.append(vendas)
+        print(len(posicao_list))
+        print(len(nome_list))
+        print(len(link_list))
+        print(len(normal_quantity_list))
+        print(len(full_quantity_list))
+        print(len(porcentagem_no_full_list))
+        print(len(link_trends_list))
+        print(len(vendas_anuncio_1))
+        print(len(vendas_anuncio_2))
+        print(len(vendas_anuncio_3))
+        print(len(qntd_netshoes_list))
+        print(len(qntd_magalu_list))
 
         aux1 = aux1 + 1
         # Limpa armazenamento dos três anúncios.
@@ -268,7 +284,6 @@ for link_index in range(len(url_list)):
 
     # Ultima atualização
     data['UltimaAtualizacao'] = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
-
     # Salvando no Excel
     data = data[
         ['Posicao', 'Nome', 'Qnt_Netshoes', 'Qnt_Magalu', 'Qnt_ML', 'Qnt_Full', '%_no_Full', 'V_Anuncio_1',
@@ -299,7 +314,6 @@ for column in data:
     writer.sheets['ferramentas'].set_column(col_idx, col_idx, column_length)
     writer.sheets['games'].set_column(col_idx, col_idx, column_length)
     writer.sheets['industria-comercio'].set_column(col_idx, col_idx, column_length)
-    writer.sheets['ingressos'].set_column(col_idx, col_idx, column_length)
     writer.sheets['joias-relogios'].set_column(col_idx, col_idx, column_length)
     writer.sheets['eletrodomesticos'].set_column(col_idx, col_idx, column_length)
     writer.sheets['festas-lembrancinhas'].set_column(col_idx, col_idx, column_length)
