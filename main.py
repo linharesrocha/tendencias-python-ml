@@ -7,7 +7,7 @@ from datetime import date
 import slack
 import os
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import requests
 import time
 
@@ -18,64 +18,64 @@ st = time.time()
 
 ch = '_'
 
-url_list = [# 'https://lista.mercadolivre.com.br/esportes-fitness/',
-            # 'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
-            # 'https://lista.mercadolivre.com.br/saude/',
-            # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
+url_list = ['https://lista.mercadolivre.com.br/esportes-fitness/',
+            'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+            'https://lista.mercadolivre.com.br/saude/',
+            'https://lista.mercadolivre.com.br/acessorios-veiculos/',
             'https://lista.mercadolivre.com.br/alimentos-bebidas/',
-            # 'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
-            # 'https://lista.mercadolivre.com.br/bebes/',
-            # 'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
-            # 'https://lista.mercadolivre.com.br/celulares-telefones/',
-            # 'https://lista.mercadolivre.com.br/agro/',
-            # 'https://lista.mercadolivre.com.br/animais/',
-            # 'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
-            # 'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
-            # 'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
-            # 'https://lista.mercadolivre.com.br/construcao/',
-            # 'https://lista.mercadolivre.com.br/cameras-acessorios/',
-            # 'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
-            # 'https://lista.mercadolivre.com.br/ferramentas/',
-            # 'https://lista.mercadolivre.com.br/games/',
-            # 'https://lista.mercadolivre.com.br/industria-comercio/',
-            # 'https://lista.mercadolivre.com.br/ingressos/',
-            # 'https://lista.mercadolivre.com.br/joias-relogios/',
-            # 'https://lista.mercadolivre.com.br/eletrodomesticos/',
-            # 'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
-            # 'https://lista.mercadolivre.com.br/informatica/',
-            # 'https://lista.mercadolivre.com.br/instrumentos-musicais/',
-            # 'https://lista.mercadolivre.com.br/livros-revistas-comics/',
-            # 'https://lista.mercadolivre.com.br/mais-categorias/'
+            'https://lista.mercadolivre.com.br/antiguidades-colecoes/',
+            'https://lista.mercadolivre.com.br/bebes/',
+            'https://lista.mercadolivre.com.br/brinquedos-hobbies/',
+            'https://lista.mercadolivre.com.br/celulares-telefones/',
+            'https://lista.mercadolivre.com.br/agro/',
+            'https://lista.mercadolivre.com.br/animais/',
+            'https://lista.mercadolivre.com.br/arte-papelaria-armarinho/',
+            'https://lista.mercadolivre.com.br/beleza-cuidado-pessoal/',
+            'https://lista.mercadolivre.com.br/casa-moveis-decoracao/',
+            'https://lista.mercadolivre.com.br/construcao/',
+            'https://lista.mercadolivre.com.br/cameras-acessorios/',
+            'https://lista.mercadolivre.com.br/eletronicos-audio-video/',
+            'https://lista.mercadolivre.com.br/ferramentas/',
+            'https://lista.mercadolivre.com.br/games/',
+            'https://lista.mercadolivre.com.br/industria-comercio/',
+            'https://lista.mercadolivre.com.br/ingressos/',
+            'https://lista.mercadolivre.com.br/joias-relogios/',
+            'https://lista.mercadolivre.com.br/eletrodomesticos/',
+            'https://lista.mercadolivre.com.br/festas-lembrancinhas/',
+            'https://lista.mercadolivre.com.br/informatica/',
+            'https://lista.mercadolivre.com.br/instrumentos-musicais/',
+            'https://lista.mercadolivre.com.br/livros-revistas-comics/',
+            'https://lista.mercadolivre.com.br/mais-categorias/'
             ]
 categorias_list = [
-    # 'esportes-fitness',
-    # 'calcados-roupas-bolsas',
-    # 'saude',
-    # 'acessorios-veiculos',
+    'esportes-fitness',
+    'calcados-roupas-bolsas',
+    'saude',
+    'acessorios-veiculos',
     'alimentos-bebidas',
-    # 'antiguidades-colecoes',
-    # 'bebes',
-    # 'brinquedos-hobbies',
-    # 'celulares-telefones',
-    # 'agro',
-    # 'animais',
-    # 'arte-papelaria-armarinho',
-    # 'beleza-cuidado-pessoal',
-    # 'casa-moveis-decoracao',
-    # 'construcao',
-    # 'cameras-acessorios',
-    # 'eletronicos-audio-video',
-    # 'ferramentas',
-    # 'games',
-    # 'industria-comercio',
-    # 'ingressos',
-    # 'joias-relogios',
-    # 'eletrodomesticos',
-    # 'festas-lembrancinhas',
-    # 'informatica',
-    # 'instrumentos-musicais',
-    # 'livros-revistas-comics',
-    # 'mais-categorias'
+    'antiguidades-colecoes',
+    'bebes',
+    'brinquedos-hobbies',
+    'celulares-telefones',
+    'agro',
+    'animais',
+    'arte-papelaria-armarinho',
+    'beleza-cuidado-pessoal',
+    'casa-moveis-decoracao',
+    'construcao',
+    'cameras-acessorios',
+    'eletronicos-audio-video',
+    'ferramentas',
+    'games',
+    'industria-comercio',
+    'ingressos',
+    'joias-relogios',
+    'eletrodomesticos',
+    'festas-lembrancinhas',
+    'informatica',
+    'instrumentos-musicais',
+    'livros-revistas-comics',
+    'mais-categorias'
 ]
 
 # Formating Date
@@ -109,6 +109,7 @@ for link_index in range(len(url_list)):
     normal_quantity_list = []
     full_quantity_list = []
     porcentagem_no_full_list = []
+    link_trends_list = []
     qntd_netshoes_list = []
     links_3_anuncios = []
     vendas_3_anuncios = []
@@ -132,11 +133,24 @@ for link_index in range(len(url_list)):
         link_list.append(link.get('href').replace('#trend', '').split(ch, 1)[0])
 
     # Acessando a página de cada categoria tendência
+    aux1 = 1
     for link in link_list:
+        print(str(aux1) + '/' + str(len(link_list)) + ' --> ' + link)
         page = requests.get(link)
         site = BeautifulSoup(page.content, "html.parser")
-        normal_string_quantity = site.find('span', class_="ui-search-search-result__quantity-results").getText()
-        normal_total_quantity = int(re.sub('[^0-9]', '', normal_string_quantity))
+        try:
+            normal_string_quantity = site.find('span', class_="ui-search-search-result__quantity-results").getText()
+            normal_total_quantity = int(re.sub('[^0-9]', '', normal_string_quantity))
+        except:
+            # Removendo caso não ache nenhuma informação na página de anúncios da categoria
+            index_error = link_list.index(link)
+            normal_quantity_list.append('ERRO')
+            full_quantity_list.append('ERRO')
+            porcentagem_no_full_list.append('ERRO')
+            vendas_anuncio_1.append('ERRO')
+            vendas_anuncio_2.append('ERRO')
+            vendas_anuncio_3.append('ERRO')
+            continue
 
         # Coletando quantidade de anúncio do Full
         try:
@@ -199,12 +213,12 @@ for link_index in range(len(url_list)):
             elif len(vendas_anuncio_1) == len(vendas_anuncio_2) and len(vendas_anuncio_2) == len(vendas_anuncio_3):
                 vendas_anuncio_1.append(vendas)
 
+        aux1 = aux1 + 1
         # Limpa armazenamento dos três anúncios.
         links_3_anuncios.clear()
 
     # Google Trends
     url_google_trends = "https://trends.google.com.br/trends/explore?geo=BR&q="
-    link_trends_list = []
     for name in nome_list:
         link_trends_list.append(url_google_trends + name)
 
