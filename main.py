@@ -218,19 +218,6 @@ for link_index in range(len(url_list)):
             vendas_anuncio_2.append('menos de 3 anuncios')
             vendas_anuncio_3.append('menos de 3 anuncios')
 
-        print(len(posicao_list))
-        print(len(nome_list))
-        print(len(link_list))
-        print(len(normal_quantity_list))
-        print(len(full_quantity_list))
-        print(len(porcentagem_no_full_list))
-        print(len(link_trends_list))
-        print(len(vendas_anuncio_1))
-        print(len(vendas_anuncio_2))
-        print(len(vendas_anuncio_3))
-        print(len(qntd_netshoes_list))
-        print(len(qntd_magalu_list))
-
         aux1 = aux1 + 1
         # Limpa armazenamento dos três anúncios.
         links_3_anuncios.clear()
