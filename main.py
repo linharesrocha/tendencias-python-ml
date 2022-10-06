@@ -111,6 +111,7 @@ for link_index in range(len(url_list)):
     link_trends_list = []
     qntd_netshoes_list = []
     qntd_magalu_list = []
+    qntd_dafiti_list = []
     links_3_anuncios = []
     vendas_3_anuncios = []
     vendas_anuncio_1 = []
@@ -250,7 +251,7 @@ for link_index in range(len(url_list)):
     for name in nome_list:
         page = requests.get(url + name, headers=user_agent)
         site = BeautifulSoup(page.content, "html.parser")
-        # Quantidade de anuncios Netshoes
+        # Quantidade de anuncios Magalu
         try:
             product_quantity_string = site.find('p', class_='sc-zCoBu jEEPCh').getText()
             list_numbers_string = re.findall(r'\d+', product_quantity_string)
@@ -260,6 +261,23 @@ for link_index in range(len(url_list)):
             product_quantity = 0
 
         qntd_magalu_list.append(product_quantity)
+
+    # Dafiti
+    # url = 'https://www.dafiti.com.br/catalog/?q='
+    # for name in nome_list:
+    #     page = requests.get(url + name)
+    #     site = BeautifulSoup(page.content, "html.parser")
+    #     # Quantidade de anuncios Dafiti
+    #     try:
+    #         product_quantity_string = site.find('span', class_='value').getText()
+    #         print(product_quantity_string)
+    #         list_numbers_string = re.findall(r'\d+', product_quantity_string)
+    #         results = list(map(int, list_numbers_string))
+    #         product_quantity = results[-1]
+    #     except AttributeError:
+    #         product_quantity = 0
+    # 
+    #     qntd_dafiti_list.append(product_quantity)
 
     # Salvando em um DataFrame
     dicionario = {'Posicao': posicao_list, 'Nome': nome_list, 'Link_ML': link_list, 'Qnt_ML': normal_quantity_list,
