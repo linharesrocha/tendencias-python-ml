@@ -163,7 +163,7 @@ def google_trends():
     for name in list_product_names:
         link_trends_list.append(url_google_trends + name)
 
-    data['Trends'] = url_google_trends
+    data['Trends'] = link_trends_list
     return data
 
 
@@ -249,8 +249,20 @@ def salvando_aba():
     print('SALVANDO ABA')
     # Salvando no Excel
     data_ordenado = data[
-        ['Posicao', 'Nome', 'Qnt_Netshoes', 'Qnt_Magalu', 'Qnt_Dafiti', 'Qnt_ML', 'Qnt_Full', '%_no_Full',
-         'V_Anuncio_1', 'V_Anuncio_2', 'V_Anuncio_3', 'Link_ML', 'Trends', 'UltimaAtualizacao']]
+        ['Posicao',
+         'Nome',
+         'Qnt_Netshoes',
+         'Qnt_Dafiti',
+         'Qnt_Magalu',
+         'Qnt_ML',
+         'Qnt_Full',
+         '%_no_Full',
+         'V_Anuncio_1',
+         'V_Anuncio_2',
+         'V_Anuncio_3',
+         'Link_ML',
+         'Trends',
+         'UltimaAtualizacao']]
 
     data_ordenado.to_excel(writer, sheet_name=categorias_list[index], index=False)
 
@@ -277,6 +289,10 @@ def bot_slack():
     app = slack.WebClient(token=os.environ['SLACK_TOKEN'])
 
     # Seding
+    # app.chat_postMessage(channel='tendencias-2023', text="PRODUTOS TENDÊNCIAS - " + d1)
+    # app.files_upload(channels='tendencias-2023', file='XLSX/Tendencias-' + d1 + '.xlsx')
+
+    # Seding Test
     app.chat_postMessage(channel='tendencias-test', text="PRODUTOS TENDÊNCIAS - " + d1)
     app.files_upload(channels='tendencias-test', file='XLSX/Tendencias-' + d1 + '.xlsx')
 
@@ -295,7 +311,7 @@ if __name__ == "__main__":
     # Categorias
     url_list = [
         'https://lista.mercadolivre.com.br/esportes-fitness/',
-        'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
+        # 'https://lista.mercadolivre.com.br/calcados-roupas-bolsas/',
         # 'https://lista.mercadolivre.com.br/saude/',
         # 'https://lista.mercadolivre.com.br/acessorios-veiculos/',
         # 'https://lista.mercadolivre.com.br/alimentos-bebidas/',
@@ -324,7 +340,7 @@ if __name__ == "__main__":
     ]
     categorias_list = [
         'esportes-fitness',
-        'calcados-roupas-bolsas',
+        # 'calcados-roupas-bolsas',
         # 'saude',
         # 'acessorios-veiculos',
         # 'alimentos-bebidas',
@@ -369,7 +385,7 @@ if __name__ == "__main__":
         vendas_anuncios()
         google_trends()
         qntd_netshoes()
-        qntd_magalu()
+        # qntd_magalu() COLOCAR MAGALU NO DATA ALI EM CIMA QUE FOI TIRADO
         qntd_dafiti()
         ultima_atualizacao()
         salvando_aba()
